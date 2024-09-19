@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  
+  
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    
+    
+    <link rel="shortcut icon" href="../../../../img/favicon.ico">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <title>Consultas - JosejuEnC&digo</title>
+    <link href="../../../../css/bootstrap-3.3.7.min.css" rel="stylesheet">
+    <link href="../../../../css/font-awesome-4.7.0.css" rel="stylesheet">
+    <link href="../../../../css/base.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../../../css/highlight.css">
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+
+    <script src="../../../../js/jquery-3.2.1.min.js"></script>
+    <script src="../../../../js/bootstrap-3.3.7.min.js"></script>
+    <script src="../../../../js/highlight.pack.js"></script>
+    
+    <base target="_top">
+    <script>
+      var base_url = '../../../..';
+      var is_top_frame = false;
+        
+        var pageToc = [
+          {title: "Ejercicios de Consultas SQL", url: "#_top", children: [
+              {title: "Esquema Base de datos", url: "#esquema-base-de-datos" },
+              {title: "Ejercicios B\u00e1sicos", url: "#ejercicios-basicos" },
+              {title: "Ejercicios Avanzados", url: "#ejercicios-avanzados" },
+          ]},
+        ];
+
+    </script>
+    <script src="../../../../js/base.js"></script> 
+</head>
+
+<body>
+<script>
+if (is_top_frame) { $('body').addClass('wm-top-page'); }
+</script>
+
+
+
+<div class="container-fluid wm-page-content">
+  <a name="_top"></a>
+    
+
+    
+    
+      
+    
+
+  <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
+    
+    <div class="wm-article-nav">
+      <a href="../plsql/" class="btn btn-xs btn-default pull-left">
+        <i class="fa fa-chevron-left" aria-hidden="true"></i>
+        Previous</a><a href="../plsql/" class="btn btn-xs btn-link">
+        PL/SQL
+      </a>
+    </div>
+    
+  </div>
+
+    
+
+    <h1 id="ejercicios-de-consultas-sql">Ejercicios de Consultas SQL</h1>
+<h2 id="esquema-base-de-datos">Esquema Base de datos</h2>
+<p>Dada la siguiente base de datos realizaremos una serie de consultas.:</p>
+<p><img alt="Imagen Esquema" src="../img/esq-cons.png" /></p>
+<h2 id="ejercicios-basicos">Ejercicios Básicos</h2>
+<h3 id="obtener-todos-los-equipos">Obtener todos los equipos</h3>
+<p>Escribe una consulta para listar todos los nombres de los equipos en la tabla Equipos.</p>
+<pre><code>SQL&gt; SELECT nombre
+2  FROM equipos;
+
+NOMBRE
+--------------------------------------------------
+FC Barcelona
+Real Madrid
+Manchester United
+Bayern Munich
+</code></pre>
+<p><strong>SELECT nombre:</strong></p>
+<p>SELECT: Indica que estamos interesados en obtener datos de la base de datos.
+nombre: Especifica la columna que deseamos seleccionar. En este caso, se refiere a la columna que contiene los nombres de los equipos.</p>
+<p><strong>FROM equipos:</strong></p>
+<p>FROM: Especifica de qué tabla queremos extraer la información.
+equipos: Indica que la consulta debe buscar los datos en la tabla llamada equipos.</p>
+<h3 id="contar-camisetas-en-stock">Contar camisetas en stock</h3>
+<p>Realiza una consulta que cuente cuántas camisetas hay en stock para cada equipo.</p>
+<pre><code>SQL&gt; SELECT e.nombre AS equipo, SUM(c.stock) AS total_camisetas
+2  FROM Equipos e
+3  JOIN Camisetas c ON e.id_equipo = c.id_equipo
+4  GROUP BY e.nombre;
+
+EQUIPO                                             TOTAL_CAMISETAS
+-------------------------------------------------- ---------------
+Real Madrid                                                    150
+Bayern Munich                                                   50
+FC Barcelona                                                   100
+Manchester United                                              200
+</code></pre>
+<p><strong>SELECT e.nombre AS equipo, SUM(c.stock) AS total_camisetas:</strong></p>
+<p>SELECT: Esta cláusula indica qué columnas deseas ver en el resultado de la consulta.
+e.nombre AS equipo: Aquí estamos seleccionando el nombre del equipo (de la tabla Equipos) y le estamos dando un alias (equipo) para que sea más fácil de entender en los resultados.</p>
+<p>SUM(c.stock) AS total_camisetas: Estamos usando la función de agregación SUM para sumar el stock de camisetas (de la tabla Camisetas). El resultado de esta suma se denomina total_camisetas.</p>
+<p><strong>FROM Equipos e:</strong></p>
+<p>FROM: Indica de qué tablas se extraerán los datos.</p>
+<p>Equipos e: Aquí estamos seleccionando la tabla Equipos y le estamos asignando un alias (e). Los alias son útiles para simplificar la referencia a las tablas en la consulta.</p>
+<p><strong>JOIN Camisetas c ON e.id_equipo = c.id_equipo:</strong></p>
+<p>JOIN: Se utiliza para combinar filas de dos o más tablas basadas en una relación entre ellas.</p>
+<p>Camisetas c: Esta es la segunda tabla que estamos uniendo, y le asignamos un alias (c).</p>
+<p>ON e.id_equipo = c.id_equipo: Aquí especificamos la condición para la unión. Estamos diciendo que queremos unir las tablas donde el id_equipo de la tabla Equipos coincida con el id_equipo de la tabla Camisetas. Esto asegura que estamos combinando las camisetas con el equipo correcto.</p>
+<p><strong>GROUP BY e.nombre:</strong></p>
+<p>GROUP BY: Esta cláusula se utiliza para agrupar los resultados de acuerdo a una o más columnas. En este caso, estamos agrupando por el nombre del equipo.</p>
+<p>e.nombre: Estamos indicando que queremos agrupar los resultados según el nombre del equipo. Esto es esencial porque estamos utilizando una función de agregación (SUM), y necesitamos que el motor de la base de datos sepa cómo agrupar los datos para calcular el total de stock para cada equipo.</p>
+<h3 id="clientes-con-multiples-pedidos">Clientes con múltiples pedidos</h3>
+<p>Encuentra los nombres de los clientes que han realizado más de un pedido.</p>
+<pre><code>SQL&gt; SELECT c.nombre
+2  FROM Clientes c
+3  JOIN Pedidos p ON c.id_cliente = p.id_cliente
+4  GROUP BY c.id_cliente, c.nombre
+5  HAVING COUNT(p.id_pedido) &gt; 1;
+
+NOMBRE
+--------------------------------------------------
+Ana G??mez
+</code></pre>
+<p><strong>SELECT c.nombre:</strong></p>
+<p>SELECT: Indica que estamos seleccionando datos de la base de datos.</p>
+<p>c.nombre: Selecciona el nombre de los clientes.</p>
+<p><strong>FROM Clientes c:</strong></p>
+<p>FROM: Indica la tabla desde la cual queremos extraer datos.</p>
+<p>Clientes c: Especifica que estamos trabajando con la tabla Clientes, utilizando el alias c.</p>
+<p><strong>JOIN Pedidos p ON c.id_cliente = p.id_cliente:</strong></p>
+<p>JOIN: Une dos tablas basándose en una relación entre ellas.</p>
+<p>Pedidos p: Indica que estamos uniendo la tabla Pedidos, utilizando el alias p.</p>
+<p>ON c.id_cliente = p.id_cliente: Establece la condición de unión, donde id_cliente en Clientes coincide con id_cliente en Pedidos.</p>
+<p><strong>GROUP BY c.id_cliente, c.nombre:</strong></p>
+<p>GROUP BY: Agrupa los resultados por las columnas especificadas.</p>
+<p>c.id_cliente, c.nombre: Agrupa los resultados por el id_cliente y el nombre del cliente, lo que permite contar los pedidos por cliente.</p>
+<p><strong>HAVING COUNT(p.id_pedido) &gt; 1:</strong></p>
+<p>HAVING: Filtra los grupos resultantes que cumplen con la condición especificada.</p>
+<p>COUNT(p.id_pedido) &gt; 1: Cuenta el número de pedidos por cliente y filtra para incluir solo aquellos clientes que han realizado más de un pedido.</p>
+<h3 id="camisetas-mas-caras">Camisetas más caras</h3>
+<p>Escribe una consulta para obtener los detalles de las camisetas que tienen un precio superior a 75.00.</p>
+<pre><code>SQL&gt; SELECT c.id_camiseta, e.nombre AS nombre_equipo, c.talla, c.precio, c.stock
+2  FROM Camisetas c
+3  JOIN Equipos e ON c.id_equipo = e.id_equipo
+4  WHERE c.precio &gt; 75.00;
+
+ID_CAMISETA NOMBRE_EQUIPO                                      TALLA        PRECIO      STOCK
+----------- -------------------------------------------------- ----------   ----------  ----------
+4           Bayern Munich                                      XL           80          50
+</code></pre>
+<p><strong>SELECT c.id_camiseta, e.nombre AS nombre_equipo, c.talla, c.precio, c.stock:</strong></p>
+<p>Selecciona las columnas que deseas mostrar: el id_camiseta, el nombre del equipo (con alias nombre_equipo), la talla, el precio y el stock.</p>
+<p><strong>FROM Camisetas c:</strong></p>
+<p>Indica que estamos extrayendo datos de la tabla Camisetas, utilizando el alias c.</p>
+<p><strong>JOIN Equipos e ON c.id_equipo = e.id_equipo:</strong></p>
+<p>Une la tabla Camisetas con la tabla Equipos en función de id_equipo, lo que permite acceder al nombre del equipo.</p>
+<p><strong>WHERE c.precio &gt; 75.00:</strong></p>
+<p>Filtra los resultados para incluir solo las camisetas cuyo precio es superior a 75.00.</p>
+<h3 id="pedidos-recientes">Pedidos recientes</h3>
+<p>Muestra todos los pedidos realizados en la última semana.</p>
+<pre><code>SQL&gt; SELECT p.id_pedido, p.fecha, c.nombre
+2  FROM Pedidos p
+3  JOIN Clientes c ON p.id_cliente = c.id_cliente
+4  WHERE fecha &gt;= SYSDATE - 7;
+
+ID_PEDIDO FECHA    NOMBRE
+---------- -------- --------------------------------------------------
+        1 18/09/24 Juan P??rez
+        2 18/09/24 Ana G??mez
+        3 18/09/24 Ana G??mez
+        4 18/09/24 Ana G??mez
+        5 18/09/24 Luis Mart??nez
+</code></pre>
+<p><strong>SELECT p.id_pedido, p.fecha, c.nombre:</strong></p>
+<p>SELECT: Indica que estamos seleccionando datos de la base de datos.</p>
+<p>p.id_pedido: Selecciona el id_pedido de la tabla Pedidos, usando el alias p.</p>
+<p>p.fecha: Selecciona la columna fecha de la tabla Pedidos, que muestra cuándo se realizó cada pedido.</p>
+<p>c.nombre: Selecciona el nombre del cliente de la tabla Clientes, usando el alias c.</p>
+<p><strong>FROM Pedidos p:</strong></p>
+<p>FROM: Indica de qué tabla queremos extraer datos.</p>
+<p>Pedidos p: Especifica que estamos trabajando con la tabla Pedidos, utilizando el alias p para referirnos a ella de forma más corta.</p>
+<p><strong>JOIN Clientes c ON p.id_cliente = c.id_cliente:</strong></p>
+<p>JOIN: Une dos tablas basándose en una relación entre ellas.</p>
+<p>Clientes c: Indica que estamos uniendo la tabla Clientes, utilizando el alias c.</p>
+<p>ON p.id_cliente = c.id_cliente: Establece la condición de unión. Aquí estamos diciendo que queremos unir las filas de Pedidos y Clientes donde el id_cliente de la tabla Pedidos coincide con el id_cliente de la tabla Clientes. Esto permite obtener el nombre del cliente correspondiente a cada pedido.</p>
+<p><strong>WHERE fecha &gt;= SYSDATE - 7:</strong></p>
+<p>WHERE: Filtra los resultados de la consulta según la condición especificada.
+fecha &gt;= SYSDATE - 7: Esta condición selecciona los pedidos cuya fecha es mayor o igual a la fecha actual menos 7 días. En otras palabras, está buscando pedidos realizados en la última semana.</p>
+<h3 id="camisetas-por-talla">Camisetas por talla</h3>
+<p>Cuenta cuántas camisetas hay disponibles para cada talla.</p>
+<pre><code>SQL&gt; SELECT e.nombre, c.id_camiseta, c.talla, c.stock
+2  FROM Camisetas c
+3  JOIN Equipos e ON c.id_equipo = e.id_equipo
+4  WHERE stock &gt; 0;
+
+NOMBRE                                             ID_CAMISETA TALLA         STOCK
+-------------------------------------------------- ----------- ----------    ----------
+
+FC Barcelona                                                 1 M             100
+Real Madrid                                                  2 L             150
+Manchester United                                            3 S             200
+Bayern Munich                                                4 XL            50
+</code></pre>
+<p><strong>SELECT e.nombre, c.id_camiseta, c.talla, c.stock:</strong></p>
+<p>e.nombre: Selecciona el nombre del equipo.</p>
+<p>c.id_camiseta: Selecciona el identificador de la camiseta.</p>
+<p>c.talla: Selecciona la talla de la camiseta.</p>
+<p>c.stock: Selecciona la cantidad de stock disponible para cada camiseta.</p>
+<p><strong>FROM Camisetas c:</strong></p>
+<p>Indica que estamos trabajando con la tabla Camisetas, utilizando el alias c.</p>
+<p><strong>JOIN Equipos e ON c.id_equipo = e.id_equipo:</strong></p>
+<p>Une la tabla Camisetas con la tabla Equipos donde el id_equipo en Camisetas coincide con el id_equipo en Equipos. Esto permite acceder al nombre del equipo asociado con cada camiseta.</p>
+<p><strong>WHERE c.stock &gt; 0:</strong></p>
+<p>Filtra los resultados para incluir solo las camisetas que tienen stock disponible, es decir, aquellas cuyo valor de stock es mayor que 0.</p>
+<h3 id="jugadores-por-equipo">Jugadores por equipo</h3>
+<p>Genera una lista que muestre los nombres de los jugadores junto con el nombre de su equipo.</p>
+<pre><code>SQL&gt; SELECT j.nombre AS nombre_jugador, e.nombre AS nombre_equipo
+2  FROM Jugadores j
+3  JOIN Equipos e ON j.id_equipo = e.id_equipo;
+
+NOMBRE_JUGADOR          NOMBRE_EQUIPO
+---------------         ---------------
+Lionel Messi            FC Barcelona
+Cristiano Ronaldo       Real Madrid
+Marcus Rashford         Manchester United
+Robert Lewandowski      Bayern Munich
+</code></pre>
+<p><strong>SELECT j.nombre AS nombre_jugador, e.nombre AS nombre_equipo:</strong></p>
+<p>j.nombre AS nombre_jugador: Selecciona el nombre de cada jugador y le asigna el alias nombre_jugador.</p>
+<p>e.nombre AS nombre_equipo: Selecciona el nombre del equipo correspondiente y le asigna el alias nombre_equipo.</p>
+<p><strong>FROM Jugadores j:</strong></p>
+<p>FROM: Indica de qué tabla queremos extraer datos.</p>
+<p>Jugadores j: Especifica que estamos trabajando con la tabla Jugadores, utilizando el alias j.</p>
+<p><strong>JOIN Equipos e ON j.id_equipo = e.id_equipo:</strong></p>
+<p>JOIN: Une dos tablas en función de una relación entre ellas.</p>
+<p>Equipos e: Indica que estamos uniendo la tabla Equipos, utilizando el alias e.</p>
+<p>ON j.id_equipo = e.id_equipo: Establece la condición de unión, donde el id_equipo en Jugadores coincide con el id_equipo en Equipos. Esto permite asociar cada jugador con su equipo correspondiente.</p>
+<details>
+  <summary>HAZ CLIC PARA VER LA SOLUCIÓN</summary>
+
+</details>
+
+<h3 id="clientes-sin-pedidos">Clientes sin pedidos</h3>
+<p>Encuentra los nombres de los clientes que no han realizado ningún pedido.</p>
+<pre><code>SQL&gt; SELECT c.nombre
+    FROM Clientes c
+    LEFT JOIN Pedidos p ON c.id_cliente = p.id_cliente
+    WHERE p.id_pedido IS NULL;
+
+    NOMBRE
+    --------------------------------------------------
+    Mar??a L??pez
+</code></pre>
+<p><strong>SELECT c.nombre:</strong></p>
+<p>Selecciona el nombre de los clientes.</p>
+<p><strong>FROM Clientes c:</strong></p>
+<p>Indica que estamos trabajando con la tabla Clientes, usando el alias c.</p>
+<p><strong>LEFT JOIN Pedidos p ON c.id_cliente = p.id_cliente:</strong></p>
+<p>Realiza una unión a la izquierda (LEFT JOIN) entre Clientes y Pedidos.
+Esto incluye todos los registros de Clientes y los registros coincidentes de Pedidos. Si no hay coincidencias, las columnas de Pedidos serán NULL.
+WHERE p.id_pedido IS NULL:</p>
+<p>Filtra los resultados para incluir solo aquellos clientes que no tienen ningún pedido asociado. Esto se determina porque el id_pedido en la tabla Pedidos será NULL si no hay coincidencias.</p>
+<h3 id="detalles-de-pedidos-de-un-cliente-especifico">Detalles de pedidos de un cliente específico</h3>
+<p>Muestra el nombre del cliente junto con todos los detalles de los pedidos realizados por un cliente con un ID específico.</p>
+<pre><code>SQL&gt; SELECT c.nombre, p.*
+2  FROM Clientes c
+3  JOIN Pedidos p ON c.id_cliente = p.id_cliente
+4  WHERE c.id_cliente = 1;
+
+NOMBRE                                              ID_PEDIDO ID_CLIENTE FECHA
+-------------------------------------------------- ---------- ---------- --------
+Juan P??rez                                                 1          1 18/09/24
+</code></pre>
+<p><strong>SELECT c.nombre, p.*:</strong></p>
+<p>c.nombre: Selecciona el nombre del cliente.</p>
+<p>p.*: Selecciona todas las columnas de la tabla Pedidos.</p>
+<p><strong>FROM Clientes c:</strong></p>
+<p>Indica que estamos trabajando con la tabla Clientes, utilizando el alias c.</p>
+<p><strong>JOIN Pedidos p ON c.id_cliente = p.id_cliente:</strong></p>
+<p>Une la tabla Clientes con la tabla Pedidos donde el id_cliente en Clientes coincide con el id_cliente en Pedidos.</p>
+<p><strong>WHERE c.id_cliente = 1:</strong></p>
+<p>Filtra los resultados para incluir solo los pedidos del cliente con el ID específico. Cambia el número 1 por el ID del cliente que deseas consultar.</p>
+<h3 id="promedio-de-precios-de-camisetas">Promedio de precios de camisetas</h3>
+<p>Calcula el precio promedio de las camisetas por equipo.</p>
+<pre><code>SQL&gt; SELECT e.nombre AS nombre_equipo, AVG(c.precio) AS precio_promedio
+2  FROM Camisetas c
+3  JOIN Equipos e ON c.id_equipo = e.id_equipo
+4  GROUP BY e.nombre;
+
+NOMBRE_EQUIPO                                      PRECIO_PROMEDIO
+-------------------------------------------------- ---------------
+Real Madrid                                                     75
+Bayern Munich                                                   80
+FC Barcelona                                                    70
+Manchester United                                               65
+</code></pre>
+<p><strong>SELECT e.nombre AS nombre_equipo, AVG(c.precio) AS precio_promedio:</strong></p>
+<p>e.nombre AS nombre_equipo: Selecciona el nombre del equipo y le asigna el alias nombre_equipo.</p>
+<p>AVG(c.precio) AS precio_promedio: Calcula el precio promedio de las camisetas y le asigna el alias precio_promedio.</p>
+<p><strong>FROM Camisetas c:</strong></p>
+<p>Indica que estamos trabajando con la tabla Camisetas, usando el alias c.</p>
+<p><strong>JOIN Equipos e ON c.id_equipo = e.id_equipo:</strong></p>
+<p>Une la tabla Camisetas con la tabla Equipos donde el id_equipo en Camisetas coincide con el id_equipo en Equipos. Esto permite acceder al nombre del equipo asociado con cada camiseta.</p>
+<p><strong>GROUP BY e.nombre:</strong></p>
+<p>Agrupa los resultados por el nombre del equipo. Esto es necesario cuando se utilizan funciones de agregación, para que se calcule el precio promedio por cada equipo.**</p>
+<h2 id="ejercicios-avanzados">Ejercicios Avanzados</h2>
+<h3 id="cantidad-total-de-camisetas-por-cliente">Cantidad total de camisetas por cliente:</h3>
+<p>Crea una consulta que muestre cuántas camisetas ha comprado cada cliente en total.</p>
+<pre><code>SQL&gt; SELECT c.nombre AS cliente, SUM(dp.cantidad) AS total_camisetas
+2  FROM Clientes c
+3  JOIN Pedidos p ON c.id_cliente = p.id_cliente
+4  JOIN Detalles_Pedidos dp ON p.id_pedido = dp.id_pedido
+5  GROUP BY c.nombre
+6  ORDER BY total_camisetas DESC;
+
+CLIENTE                                            TOTAL_CAMISETAS
+-------------------------------------------------- ---------------
+Fernando Torres                                                  3
+Carlos Ram??rez                                                  3
+Juan P??rez                                                      2
+Laura L??pez                                                     2
+Jos?? Mart??nez                                                  2
+Claudia Ruiz                                                     1
+Sof??a S??nchez                                                  1
+Ana G??mez                                                       1
+Luis Hern??ndez                                                  1
+Mar??a Rodr??guez                                                1
+</code></pre>
+<p><strong>Paso 1: SELECT</strong></p>
+<pre><code>SELECT c.nombre AS cliente, SUM(dp.cantidad) AS total_camisetas
+</code></pre>
+<p>c.nombre AS cliente: En este paso seleccionamos el nombre del cliente de la tabla Clientes (alias c). El alias AS cliente simplemente renombra la columna de salida a "cliente" para que el resultado sea más claro.</p>
+<p>SUM(dp.cantidad) AS total_camisetas: Calculamos la suma de la cantidad de camisetas compradas por cada cliente usando la columna cantidad de la tabla Detalles_Pedidos (alias dp). El alias AS total_camisetas renombra esta suma a "total_camisetas" en el resultado.</p>
+<p><strong>Paso 2: FROM</strong></p>
+<pre><code>FROM Clientes c
+</code></pre>
+<p>Aquí definimos que la tabla principal será Clientes con el alias c. A partir de esta tabla comenzaremos a hacer las uniones con otras tablas.</p>
+<p><strong>Paso 3: JOIN entre Clientes y Pedidos</strong></p>
+<pre><code>JOIN Pedidos p ON c.id_cliente = p.id_cliente
+</code></pre>
+<p>JOIN: Utilizamos un INNER JOIN (de manera implícita al usar JOIN) para unir la tabla Pedidos (alias p) con la tabla Clientes.</p>
+<p>ON c.id_cliente = p.id_cliente: Se indica la relación entre estas dos tablas, es decir, cada cliente puede tener uno o más pedidos, y un pedido está asociado a un solo cliente a través de la clave foránea id_cliente.</p>
+<p><strong>Paso 4: JOIN entre Pedidos y Detalles_Pedidos</strong></p>
+<pre><code>JOIN Detalles_Pedidos dp ON p.id_pedido = dp.id_pedido
+</code></pre>
+<p>Nuevamente utilizamos un INNER JOIN, pero ahora unimos la tabla Pedidos con Detalles_Pedidos.</p>
+<p>ON p.id_pedido = dp.id_pedido: Se especifica que la relación es a través de la columna id_pedido. Esto nos permite obtener la información de cada detalle del pedido, como la cantidad de camisetas compradas en cada uno.</p>
+<p><strong>Paso 5: GROUP BY</strong></p>
+<pre><code>GROUP BY c.nombre
+</code></pre>
+<p>GROUP BY: Agrupa los resultados por el nombre del cliente (c.nombre). Esto asegura que la función de agregación (en este caso, SUM) se aplique por cliente, no por cada fila individual de la tabla de detalles.</p>
+<p><strong>Paso 6: ORDER BY</strong></p>
+<pre><code>ORDER BY total_camisetas DESC;
+</code></pre>
+<p>ORDER BY: Finalmente, ordenamos los resultados según el total de camisetas compradas (total_camisetas) en orden descendente (DESC), mostrando primero los clientes que han comprado más camisetas.</p>
+<h3 id="jugadores-destacados">Jugadores destacados:</h3>
+<p>Selecciona los jugadores que juegan en la posición "Delantero" y que pertenecen al equipo "FC Barcelona".</p>
+<pre><code>SQL&gt; SELECT j.nombre AS Nombre_Jugador
+FROM SELECT j.nombre AS Nombre_Jugador
+2  FROM Jugadores j
+3  JOIN Equipos e ON j.id_equipo = e.id_equipo
+4  WHERE j.posicion = 'Delantero' AND e.nombre = 'FC Barcelona';
+
+NOMBRE_JUGADOR
+--------------------------------------------------
+Lionel Messi
+</code></pre>
+<h3 id="camisetas-vendidas">Camisetas vendidas:</h3>
+<p>Muestra una lista con el nombre de las camisetas y la cantidad vendida para cada una.</p>
+<pre><code>SQL&gt; SELECT e.nombre AS Nombre_Camiseta, c.talla, SUM(dp.cantidad) AS cantidad_vendida
+2  FROM Equipos e
+3  JOIN Camisetas c ON e.id_equipo = c.id_equipo
+4  JOIN Detalles_Pedidos dp ON c.id_camiseta = dp.id_camiseta
+5  GROUP BY e.nombre, c.talla
+6  ORDER BY cantidad_vendida DESC;
+
+NOMBRE_CAMISETA                                    TALLA      CANTIDAD_VENDIDA
+-------------------------------------------------- ---------- ----------------
+Chelsea FC                                         S                         3
+FC Barcelona                                       M                         3
+Real Madrid                                        L                         2
+Manchester United                                  S                         2
+Juventus                                           M                         2
+Bayern M??nich                                     L                         1
+Paris Saint-Germain                                M                         1
+Liverpool FC                                       M                         1
+Atl??tico de Madrid                                M                         1
+AC Milan                                           L                         1
+</code></pre>
+<h3 id="clientes-que-compraron-camisetas-de-un-equipo-especifico">Clientes que compraron camisetas de un equipo específico:</h3>
+<p>Encuentra los nombres de los clientes que han comprado camisetas de un equipo cuyo nombre es "Bayern Munich".</p>
+<pre><code>SQL&gt; SELECT DISTINCT c.nombre AS cliente
+FROM SELECT DISTINCT c.nombre AS cliente
+2  FROM Clientes c
+3  JOIN Pedidos p ON c.id_cliente = p.id_cliente
+4  JOIN Detalles_Pedidos dp ON p.id_pedido = dp.id_pedido
+5  JOIN Camisetas ca ON dp.id_camiseta = ca.id_camiseta
+6  JOIN Equipos e ON ca.id_equipo = e.id_equipo
+7  WHERE e.nombre = 'Bayern Múnich';
+
+CLIENTE
+--------------------------------------------------
+Claudia Ruiz
+</code></pre>
+<p><strong>Paso 1: SELECT</strong></p>
+<pre><code>SELECT DISTINCT c.nombre AS cliente
+</code></pre>
+<p>SELECT: Especifica las columnas que queremos en el resultado final.</p>
+<p>c.nombre AS cliente: Seleccionamos el nombre del cliente de la tabla Clientes (con alias c). El alias AS cliente renombra esta columna en el resultado a "cliente" para mayor claridad.</p>
+<p>DISTINCT: Asegura que los nombres de los clientes en el resultado sean únicos. Si un cliente ha hecho varias compras de camisetas del mismo equipo, solo aparecerá una vez en el resultado.</p>
+<p><strong>Paso 2: FROM</strong></p>
+<pre><code>FROM Clientes c
+</code></pre>
+<p>FROM: Indica la tabla principal desde la cual comenzaremos la consulta. En este caso, es Clientes con el alias c.</p>
+<p><strong>Paso 3: JOIN entre Clientes y Pedidos</strong></p>
+<pre><code>JOIN Pedidos p ON c.id_cliente = p.id_cliente
+</code></pre>
+<p>JOIN: Realizamos un INNER JOIN entre Clientes (alias c) y Pedidos (alias p). Esto une las dos tablas basándose en la relación entre ellas.</p>
+<p>ON c.id_cliente = p.id_cliente: Especifica la condición de unión: la columna id_cliente en Clientes debe coincidir con id_cliente en Pedidos. Esto asocia cada cliente con sus pedidos.</p>
+<p><strong>Paso 4: JOIN entre Pedidos y Detales Pedidos</strong></p>
+<pre><code>JOIN Detalles_Pedidos dp ON p.id_pedido = dp.id_pedido
+</code></pre>
+<p>JOIN: Unimos la tabla Pedidos (alias p) con la tabla Detalles_Pedidos (alias dp).</p>
+<p>ON p.id_pedido = dp.id_pedido: Establece la condición de unión entre las dos tablas, usando la columna id_pedido. Esto nos permite obtener detalles específicos de cada pedido.</p>
+<p><strong>Paso 5: JOIN entre Detalles Pedidos y camisetas</strong></p>
+<pre><code>JOIN Camisetas ca ON dp.id_camiseta = ca.id_camiseta
+</code></pre>
+<p>JOIN: Realizamos un INNER JOIN entre Detalles_Pedidos (alias dp) y Camisetas (alias ca).</p>
+<p>ON dp.id_camiseta = ca.id_camiseta: Relaciona las dos tablas usando la columna id_camiseta. Esto nos proporciona información sobre las camisetas compradas en cada detalle del pedido.</p>
+<p><strong>Paso 6: JOIN Camisetas y equipos</strong></p>
+<pre><code>JOIN Equipos e ON ca.id_equipo = e.id_equipo
+</code></pre>
+<p>JOIN: Unimos la tabla Camisetas (alias ca) con la tabla Equipos (alias e).</p>
+<p>ON ca.id_equipo = e.id_equipo: Especifica que la unión se realiza a través de la columna id_equipo. Esto nos da acceso a la información sobre el equipo al que pertenece cada camiseta.</p>
+<p><strong>Paso 7: WHERE</strong></p>
+<pre><code>WHERE e.nombre = 'Bayern Múnich'
+</code></pre>
+<p>WHERE: Filtra los resultados para incluir solo aquellos en los que el nombre del equipo (e.nombre) sea 'Bayern Múnich'. Esto asegura que solo se muestren los clientes que han comprado camisetas de este equipo específico.</p>
+
+  <br>
+    
+
+    
+    
+      
+    
+
+  <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
+    
+    <div class="wm-article-nav">
+      <a href="../plsql/" class="btn btn-xs btn-default pull-left">
+        <i class="fa fa-chevron-left" aria-hidden="true"></i>
+        Previous</a><a href="../plsql/" class="btn btn-xs btn-link">
+        PL/SQL
+      </a>
+    </div>
+    
+  </div>
+
+    <br>
+</div>
+
+<footer class="container-fluid wm-page-content">
+  <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a> using <a href="https://github.com/gristlabs/mkdocs-windmill">Windmill</a> theme by Grist Labs.</p>
+</footer>
+
+</body>
+</html>

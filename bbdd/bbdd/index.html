@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  
+  
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    
+    
+    <link rel="shortcut icon" href="../../img/favicon.ico">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <title>Introducción - JosejuEnC&digo</title>
+    <link href="../../css/bootstrap-3.3.7.min.css" rel="stylesheet">
+    <link href="../../css/font-awesome-4.7.0.css" rel="stylesheet">
+    <link href="../../css/base.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../css/highlight.css">
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+
+    <script src="../../js/jquery-3.2.1.min.js"></script>
+    <script src="../../js/bootstrap-3.3.7.min.js"></script>
+    <script src="../../js/highlight.pack.js"></script>
+    
+    <base target="_top">
+    <script>
+      var base_url = '../..';
+      var is_top_frame = false;
+        
+        var pageToc = [
+          {title: "Sistemas Gestores de Bases de Datos", url: "#_top", children: [
+              {title: "SGBD Relacionales", url: "#sgbd-relacionales" },
+              {title: "SGBD NoSQL", url: "#sgbd-nosql" },
+              {title: "SGBD en la Nube", url: "#sgbd-en-la-nube" },
+          ]},
+        ];
+
+    </script>
+    <script src="../../js/base.js"></script> 
+</head>
+
+<body>
+<script>
+if (is_top_frame) { $('body').addClass('wm-top-page'); }
+</script>
+
+
+
+<div class="container-fluid wm-page-content">
+  <a name="_top"></a>
+    
+
+    
+    
+      
+    
+
+  <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
+    
+    <div class="wm-article-nav pull-right">
+      <a href="../sgbd-rel/oracle/plsql/" class="btn btn-xs btn-default pull-right">
+        Next
+        <i class="fa fa-chevron-right" aria-hidden="true"></i>
+      </a>
+      <a href="../sgbd-rel/oracle/plsql/" class="btn btn-xs btn-link">
+        PL/SQL
+      </a>
+    </div>
+    
+    <div class="wm-article-nav">
+      <a href="../.." class="btn btn-xs btn-default pull-left">
+        <i class="fa fa-chevron-left" aria-hidden="true"></i>
+        Previous</a><a href="../.." class="btn btn-xs btn-link">
+        Principal
+      </a>
+    </div>
+    
+  </div>
+
+    
+
+    <h1 id="sistemas-gestores-de-bases-de-datos">Sistemas Gestores de Bases de Datos</h1>
+<p>Los Sistemas Gestores de Bases de Datos (SGBD) son herramientas fundamentales en el mundo de la informática y la gestión de datos. Su principal función es facilitar la creación, manipulación y administración de bases de datos, que son colecciones organizadas de información.</p>
+<p>Un SGBD permite a los usuarios y aplicaciones interactuar con los datos de manera eficiente y segura. Existen diferentes tipos de SGBD, incluyendo:</p>
+<ul>
+<li>
+<p>SGBD Relacionales: Utilizan un modelo de datos basado en tablas, donde la información se organiza en filas y columnas. Ejemplos populares incluyen MySQL, PostgreSQL y Oracle.</p>
+</li>
+<li>
+<p>SGBD NoSQL: Diseñados para manejar grandes volúmenes de datos no estructurados o semi-estructurados. Ejemplos incluyen MongoDB y Cassandra.</p>
+</li>
+<li>
+<p>SGBD en la Nube: Proporcionan servicios de base de datos a través de la nube, permitiendo escalabilidad y flexibilidad. Ejemplos son Amazon RDS y Google Cloud Firestore.</p>
+</li>
+</ul>
+<p>Los SGBD ofrecen diversas características que facilitan la administración de datos, como:</p>
+<ul>
+<li>Integridad de los datos: Aseguran que los datos sean precisos y consistentes.</li>
+<li>Seguridad: Controlan el acceso y protegen la información sensible.</li>
+<li>Consultas: Permiten la recuperación de datos a través de lenguajes de consulta como SQL.</li>
+<li>Transacciones: Garantizan que las operaciones de datos se realicen de manera confiable.</li>
+</ul>
+<p>En un entorno empresarial, los SGBD son esenciales para la toma de decisiones informadas, el análisis de datos y la optimización de procesos. A medida que la cantidad de datos generados continúa creciendo, la comprensión y gestión eficaz de estos sistemas se vuelve cada vez más crítica.</p>
+<h2 id="sgbd-relacionales">SGBD Relacionales</h2>
+<p>Los SGBD Relacionales son una categoría de sistemas de gestión de bases de datos que organizan la información en estructuras tabulares, es decir, en tablas compuestas por filas y columnas. Esta organización permite la representación y manipulación eficiente de datos, y está basada en el modelo relacional propuesto por Edgar F. Codd en 1970.</p>
+<h3 id="principios-fundamentales">Principios Fundamentales</h3>
+<p>Estos principios permiten mantener la organización, coherencia y precisión de los datos dentro de un SGBD Relacional.</p>
+<h4 id="modelo-de-datos-relacional">Modelo de Datos Relacional:</h4>
+<p>La información se organiza en tablas, donde cada tabla representa una entidad (por ejemplo, "Clientes", "Productos").
+Cada fila de una tabla corresponde a un registro único, mientras que cada columna representa un atributo de esa entidad (por ejemplo, nombre, precio, dirección).</p>
+<h4 id="llaves-primarias-y-foraneas">Llaves Primarias y Foráneas:</h4>
+<p>Llave Primaria: Un identificador único para cada fila en una tabla. Asegura que no haya duplicados en la misma tabla.
+Llave Foránea: Un campo que establece una relación con la llave primaria de otra tabla, permitiendo la vinculación entre diferentes entidades.</p>
+<h4 id="integridad-de-los-datos">Integridad de los Datos:</h4>
+<p>Integridad de Entidad: Asegura que cada fila tenga un identificador único (llave primaria).
+Integridad Referencial: Asegura que las relaciones entre tablas sean válidas, impidiendo que se introduzcan registros en una tabla que hagan referencia a valores no existentes en otra tabla.</p>
+<h3 id="lenguaje-de-consulta-estructurado-sql">Lenguaje de Consulta Estructurado (SQL)</h3>
+<p>El lenguaje SQL es el estándar para interactuar con bases de datos relacionales. Permite realizar diversas operaciones, como:</p>
+<ul>
+<li>Consultas (SELECT): Recuperar datos de una o más tablas.</li>
+<li>Inserciones (INSERT): Agregar nuevos registros a una tabla.</li>
+<li>Actualizaciones (UPDATE): Modificar registros existentes.</li>
+<li>Eliminaciones (DELETE): Remover registros de una tabla.</li>
+<li>Definición de Datos (DDL): Crear o modificar estructuras de tablas y relaciones (CREATE, ALTER, DROP).</li>
+</ul>
+<h3 id="ventajas-de-los-sgbd-relacionales">Ventajas de los SGBD Relacionales</h3>
+<ul>
+<li>Estructura Clara y Organizada: La representación tabular facilita la comprensión y gestión de los datos.</li>
+<li>Flexibilidad y Escalabilidad: Permiten la adición de nuevas tablas y relaciones sin afectar la integridad de los datos existentes.</li>
+<li>Facilidad de Acceso y Consulta: SQL proporciona un medio poderoso y versátil para realizar consultas complejas.</li>
+<li>Mantenimiento de la Integridad de los Datos: Las reglas de integridad ayudan a garantizar que los datos sean precisos y coherentes.</li>
+</ul>
+<h3 id="desventajas-de-los-sgbd-relacionales">Desventajas de los SGBD Relacionales</h3>
+<ul>
+<li>Rendimiento en Grandes Volúmenes de Datos: Pueden experimentar problemas de rendimiento a medida que las bases de datos crecen, especialmente en operaciones complejas.</li>
+<li>Rigidez Estructural: La estructura tabular puede ser menos flexible para ciertos tipos de datos, como datos no estructurados o semi-estructurados.</li>
+<li>Escalabilidad Horizontal Limitada: La escalabilidad horizontal (distribución de datos en múltiples servidores) puede ser más complicada en comparación con algunas bases de datos NoSQL.</li>
+</ul>
+<h3 id="casos-de-uso-comunes">Casos de Uso Comunes</h3>
+<ul>
+<li>Sistemas de Gestión Empresarial: ERP y CRM que requieren un manejo estructurado de datos.</li>
+<li>Aplicaciones Financieras: Gestión de transacciones y datos sensibles.</li>
+<li>Aplicaciones Web: Backend de aplicaciones que requieren almacenamiento de datos de usuarios, productos, etc.</li>
+</ul>
+<h3 id="ejemplos-de-sgbd-relacionales">Ejemplos de SGBD Relacionales</h3>
+<ul>
+<li>MySQL: Popular en aplicaciones web y desarrollo de software.</li>
+<li>PostgreSQL: Conocido por su flexibilidad y soporte de tipos de datos avanzados.</li>
+<li>Oracle Database: Utilizado en grandes corporaciones por su robustez y características avanzadas.</li>
+<li>Microsoft SQL Server: Integrado en el ecosistema de Microsoft, popular en empresas que utilizan tecnología de Microsoft.</li>
+</ul>
+<h3 id="conclusion">Conclusión</h3>
+<p>Los SGBD Relacionales son una base esencial para la gestión de datos en una amplia variedad de aplicaciones y sectores. Su estructura organizada, el uso del SQL para consultas y su enfoque en la integridad de los datos los convierten en una opción confiable y poderosa para el manejo de información crítica.</p>
+<h2 id="sgbd-nosql">SGBD NoSQL</h2>
+<p>Los SGBD NoSQL son una categoría de sistemas de gestión de bases de datos que se diseñaron para manejar grandes volúmenes de datos no estructurados o semi-estructurados. A diferencia de los SGBD Relacionales, que utilizan un modelo tabular, los SGBD NoSQL ofrecen diferentes modelos de datos, como documentos, clave-valor, columnas y grafos.</p>
+<h3 id="principios-fundamentales_1">Principios Fundamentales</h3>
+<p>Estos principios permiten a los SGBD NoSQL abordar las necesidades de las aplicaciones modernas que manejan grandes volúmenes de datos y requieren flexibilidad.</p>
+<h4 id="modelo-de-datos-flexible">Modelo de Datos Flexible:</h4>
+<p>NoSQL permite almacenar datos en formatos más variados, como documentos JSON, pares clave-valor o grafos. Esto proporciona flexibilidad para representar datos complejos y cambiantes.</p>
+<h4 id="escalabilidad-horizontal">Escalabilidad Horizontal:</h4>
+<p>Muchos SGBD NoSQL están diseñados para escalar horizontalmente, lo que significa que pueden manejar más datos y más usuarios distribuyendo la carga entre múltiples servidores.</p>
+<h4 id="alto-rendimiento">Alto Rendimiento:</h4>
+<p>Son capaces de manejar grandes volúmenes de datos y consultas de alto rendimiento, lo que los hace ideales para aplicaciones que requieren acceso rápido a grandes conjuntos de información.</p>
+<h4 id="desnormalizacion">Desnormalización:</h4>
+<p>En lugar de normalizar los datos en múltiples tablas, los SGBD NoSQL a menudo desnormalizan los datos para optimizar la velocidad de lectura, almacenando información relacionada en una sola estructura.</p>
+<h4 id="sin-esquema-estricto">Sin Esquema Estricto:</h4>
+<p>No requieren un esquema fijo como los SGBD Relacionales, lo que permite a los desarrolladores modificar la estructura de los datos sin interrumpir el funcionamiento del sistema.</p>
+<h3 id="tipos-de-sgbd-nosql">Tipos de SGBD NoSQL</h3>
+<ul>
+<li>
+<p>Bases de Datos de Documentos: Almacenan datos en documentos JSON o BSON. Ejemplos: MongoDB, CouchDB.</p>
+</li>
+<li>
+<p>Bases de Datos de Clave-Valor: Almacenan datos como pares de clave y valor, ideales para aplicaciones que requieren accesos rápidos. Ejemplos: Redis, DynamoDB.</p>
+</li>
+<li>
+<p>Bases de Datos de Columnas: Organizan datos en columnas en lugar de filas, optimizando el rendimiento en consultas analíticas. Ejemplos: Cassandra, HBase.</p>
+</li>
+<li>
+<p>Bases de Datos de Grafos: Diseñadas para almacenar y consultar relaciones complejas entre datos, representando la información en forma de grafos. Ejemplos: Neo4j, Amazon Neptune.</p>
+</li>
+</ul>
+<h3 id="ventajas-de-los-sgbd-nosql">Ventajas de los SGBD NoSQL</h3>
+<ul>
+<li>
+<p>Flexibilidad: Permiten manejar datos no estructurados y adaptarse a cambios en los requisitos del modelo de datos.</p>
+</li>
+<li>
+<p>Escalabilidad: Facilitan la expansión horizontal al agregar más servidores para gestionar el crecimiento de datos y usuarios.</p>
+</li>
+<li>
+<p>Rendimiento: Ofrecen acceso rápido a datos y consultas eficientes, especialmente en aplicaciones con grandes volúmenes de información.</p>
+</li>
+<li>
+<p>Manejo de Datos Diversos: Pueden almacenar diferentes tipos de datos sin necesidad de una estructura rígida.</p>
+</li>
+</ul>
+<h3 id="desventajas-de-los-sgbd-nosql">Desventajas de los SGBD NoSQL</h3>
+<ul>
+<li>
+<p>Consistencia Eventual: Muchas bases de datos NoSQL utilizan modelos de consistencia eventual, lo que puede no ser adecuado para todas las aplicaciones, especialmente aquellas que requieren transacciones ACID.</p>
+</li>
+<li>
+<p>Falta de Estándares: No hay un lenguaje de consulta estándar unificado como SQL, lo que puede dificultar la transición entre diferentes SGBD NoSQL.</p>
+</li>
+<li>
+<p>Curva de Aprendizaje: Puede ser más complejo para desarrolladores acostumbrados a la lógica de los SGBD Relacionales.</p>
+</li>
+</ul>
+<h3 id="casos-de-uso-comunes_1">Casos de Uso Comunes</h3>
+<ul>
+<li>Aplicaciones Web y Móviles: Para gestionar grandes volúmenes de datos de usuarios, contenido y preferencias.</li>
+<li>Big Data y Análisis de Datos: Ideal para el procesamiento y análisis de grandes conjuntos de datos en tiempo real.</li>
+<li>Internet de las Cosas (IoT): Para almacenar y procesar datos generados por dispositivos conectados.</li>
+</ul>
+<h3 id="conclusion_1">Conclusión</h3>
+<p>Los SGBD NoSQL son una solución poderosa y flexible para la gestión de datos en entornos donde la agilidad, escalabilidad y rendimiento son críticos. Su capacidad para manejar diferentes tipos de datos y su enfoque en la escalabilidad horizontal los hacen ideales para una amplia variedad de aplicaciones modernas.</p>
+<h2 id="sgbd-en-la-nube">SGBD en la Nube</h2>
+<p>Los SGBD en la Nube son servicios de gestión de bases de datos que se ofrecen a través de plataformas en la nube. Permiten a las organizaciones almacenar, gestionar y acceder a sus datos sin necesidad de infraestructura física propia, aprovechando la escalabilidad, flexibilidad y accesibilidad que ofrece la nube.</p>
+<h3 id="principios-fundamentales_2">Principios Fundamentales</h3>
+<p>Estos principios permiten a las organizaciones aprovechar al máximo las ventajas de la nube en la gestión de datos.</p>
+<h4 id="modelo-de-servicio">Modelo de Servicio:</h4>
+<p>Generalmente se ofrecen en modelos de servicio como Database as a Service (DBaaS), donde el proveedor gestiona la infraestructura, el software y las actualizaciones, permitiendo a los usuarios centrarse en el desarrollo de aplicaciones.</p>
+<h4 id="escalabilidad-automatica">Escalabilidad Automática:</h4>
+<p>Permiten ajustar automáticamente los recursos de almacenamiento y computación según la demanda, facilitando el manejo de picos de tráfico sin interrupciones.</p>
+<h4 id="accesibilidad-global">Accesibilidad Global:</h4>
+<p>Los datos pueden ser accedidos desde cualquier lugar con conexión a Internet, lo que facilita la colaboración y el trabajo remoto.</p>
+<h4 id="seguridad-y-cumplimiento">Seguridad y Cumplimiento:</h4>
+<p>Proveedores de nube suelen ofrecer características de seguridad avanzadas, como cifrado, autenticación multifactor y copias de seguridad automáticas, además de cumplir con normativas de protección de datos.</p>
+<h4 id="gestion-simplificada">Gestión Simplificada:</h4>
+<p>Incluyen herramientas para la administración y monitoreo de bases de datos, lo que reduce la carga operativa para los equipos de TI.</p>
+<h3 id="tipos-de-sgbd-en-la-nube">Tipos de SGBD en la Nube</h3>
+<ul>
+<li>
+<p>SGBD Relacionales: Como Amazon RDS y Google Cloud SQL, que ofrecen bases de datos SQL en la nube.</p>
+</li>
+<li>
+<p>SGBD NoSQL: Como Amazon DynamoDB y Google Cloud Firestore, que permiten manejar datos no estructurados o semi-estructurados.</p>
+</li>
+<li>
+<p>Data Warehouses: Como Google BigQuery y Amazon Redshift, diseñados para análisis de grandes volúmenes de datos.</p>
+</li>
+<li>
+<p>Bases de Datos de Grafos: Como Amazon Neptune, que se especializan en gestionar relaciones complejas entre datos.</p>
+</li>
+</ul>
+<h3 id="ventajas-de-los-sgbd-en-la-nube">Ventajas de los SGBD en la Nube</h3>
+<ul>
+<li>
+<p>Reducción de Costos: Eliminan la necesidad de inversiones en hardware y reducen costos operativos, ya que se paga por lo que se utiliza.</p>
+</li>
+<li>
+<p>Escalabilidad y Flexibilidad: Permiten ajustar los recursos de manera dinámica según las necesidades del negocio.</p>
+</li>
+<li>
+<p>Alta Disponibilidad y Resiliencia: Proveedores de nube suelen ofrecer redundancia y recuperación ante desastres, asegurando que los datos estén siempre disponibles.</p>
+</li>
+<li>
+<p>Innovación Rápida: Facilitan la implementación de nuevas tecnologías y actualizaciones de forma ágil.</p>
+</li>
+</ul>
+<h3 id="desventajas-de-los-sgbd-en-la-nube">Desventajas de los SGBD en la Nube</h3>
+<ul>
+<li>
+<p>Dependencia del Proveedor: La elección de un proveedor de nube puede generar dependencia, dificultando la migración a otra solución.</p>
+</li>
+<li>
+<p>Preocupaciones de Seguridad: Aunque se implementan medidas de seguridad, siempre existe el riesgo de vulnerabilidades y brechas de seguridad.</p>
+</li>
+<li>
+<p>Costos Variables: Aunque pueden ser más económicos, los costos pueden aumentar rápidamente si no se gestionan adecuadamente los recursos.</p>
+</li>
+</ul>
+<h3 id="casos-de-uso-comunes_2">Casos de Uso Comunes</h3>
+<ul>
+<li>Aplicaciones Empresariales: Para gestionar datos críticos en tiempo real.</li>
+<li>Desarrollo Ágil: Permiten a los equipos de desarrollo implementar y probar aplicaciones rápidamente.</li>
+<li>Análisis de Datos: Utilizados para análisis de datos y generación de informes en tiempo real.</li>
+</ul>
+<h3 id="conclusion_2">Conclusión</h3>
+<p>Los SGBD en la Nube representan una solución moderna y eficiente para la gestión de datos, ofreciendo flexibilidad, escalabilidad y reducción de costos. Su capacidad para integrarse con otras soluciones en la nube los convierte en una opción atractiva para organizaciones que buscan optimizar su infraestructura de datos.</p>
+
+  <br>
+    
+
+    
+    
+      
+    
+
+  <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
+    
+    <div class="wm-article-nav pull-right">
+      <a href="../sgbd-rel/oracle/plsql/" class="btn btn-xs btn-default pull-right">
+        Next
+        <i class="fa fa-chevron-right" aria-hidden="true"></i>
+      </a>
+      <a href="../sgbd-rel/oracle/plsql/" class="btn btn-xs btn-link">
+        PL/SQL
+      </a>
+    </div>
+    
+    <div class="wm-article-nav">
+      <a href="../.." class="btn btn-xs btn-default pull-left">
+        <i class="fa fa-chevron-left" aria-hidden="true"></i>
+        Previous</a><a href="../.." class="btn btn-xs btn-link">
+        Principal
+      </a>
+    </div>
+    
+  </div>
+
+    <br>
+</div>
+
+<footer class="container-fluid wm-page-content">
+  <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a> using <a href="https://github.com/gristlabs/mkdocs-windmill">Windmill</a> theme by Grist Labs.</p>
+</footer>
+
+</body>
+</html>

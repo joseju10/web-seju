@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  
+  
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    
+    
+    <link rel="shortcut icon" href="../../../../img/favicon.ico">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <title>PL/SQL - JosejuEnC&digo</title>
+    <link href="../../../../css/bootstrap-3.3.7.min.css" rel="stylesheet">
+    <link href="../../../../css/font-awesome-4.7.0.css" rel="stylesheet">
+    <link href="../../../../css/base.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../../../css/highlight.css">
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+
+    <script src="../../../../js/jquery-3.2.1.min.js"></script>
+    <script src="../../../../js/bootstrap-3.3.7.min.js"></script>
+    <script src="../../../../js/highlight.pack.js"></script>
+    
+    <base target="_top">
+    <script>
+      var base_url = '../../../..';
+      var is_top_frame = false;
+        
+        var pageToc = [
+          {title: "Definici\u00f3n", url: "#_top", children: [
+          ]},
+          {title: "Caracter\u00edsticas Principales", url: "#caracteristicas-principales", children: [
+          ]},
+          {title: "Componentes de PL/SQL", url: "#componentes-de-plsql", children: [
+              {title: "Bloques PL/SQL:", url: "#bloques-plsql" },
+              {title: "Procedimientos y Funciones", url: "#procedimientos-y-funciones" },
+              {title: "Paquetes", url: "#paquetes" },
+          ]},
+          {title: "Ventajas de PL/SQL", url: "#ventajas-de-plsql", children: [
+          ]},
+          {title: "Casos de Uso", url: "#casos-de-uso", children: [
+          ]},
+          {title: "Conclusi\u00f3n", url: "#conclusion", children: [
+          ]},
+        ];
+
+    </script>
+    <script src="../../../../js/base.js"></script> 
+</head>
+
+<body>
+<script>
+if (is_top_frame) { $('body').addClass('wm-top-page'); }
+</script>
+
+
+
+<div class="container-fluid wm-page-content">
+  <a name="_top"></a>
+    
+
+    
+    
+      
+    
+
+  <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
+    
+    <div class="wm-article-nav pull-right">
+      <a href="../consultas/" class="btn btn-xs btn-default pull-right">
+        Next
+        <i class="fa fa-chevron-right" aria-hidden="true"></i>
+      </a>
+      <a href="../consultas/" class="btn btn-xs btn-link">
+        Consultas
+      </a>
+    </div>
+    
+    <div class="wm-article-nav">
+      <a href="../../../bbdd/" class="btn btn-xs btn-default pull-left">
+        <i class="fa fa-chevron-left" aria-hidden="true"></i>
+        Previous</a><a href="../../../bbdd/" class="btn btn-xs btn-link">
+        Introducción
+      </a>
+    </div>
+    
+  </div>
+
+    
+
+    <h2 id="definicion">Definición</h2>
+<p>PL/SQL (Procedural Language/Structured Query Language) es un lenguaje de programación de propósito específico desarrollado por Oracle para interactuar con su sistema de gestión de bases de datos. Combina características de SQL, que es un lenguaje declarativo utilizado para manipular datos, con la programación procedural, permitiendo el desarrollo de aplicaciones complejas.</p>
+<h2 id="caracteristicas-principales">Características Principales</h2>
+<p>Integración con SQL:</p>
+<p>PL/SQL permite la ejecución de sentencias SQL dentro de su sintaxis, lo que facilita el acceso y la manipulación de datos en la base de datos Oracle.</p>
+<p>Estructuras de Control:</p>
+<p>Ofrece estructuras de control como condicionales (IF, CASE) y bucles (FOR, WHILE), permitiendo la implementación de lógica de programación compleja.</p>
+<p>Manejo de Excepciones:</p>
+<p>Proporciona un mecanismo robusto para el manejo de errores a través de bloques de excepciones, lo que permite gestionar situaciones imprevistas de manera controlada.</p>
+<p>Modularidad:</p>
+<p>Permite crear procedimientos, funciones y paquetes, facilitando la organización del código y la reutilización de funciones.</p>
+<p>Declaración de Variables:</p>
+<p>Soporta la declaración de variables, constantes y tipos de datos, lo que permite almacenar y manipular datos dentro de los bloques PL/SQL.</p>
+<p>Ejecución en el Servidor:</p>
+<p>PL/SQL se ejecuta en el servidor de base de datos, lo que minimiza la cantidad de datos que deben transferirse entre el cliente y el servidor, mejorando el rendimiento.</p>
+<h2 id="componentes-de-plsql">Componentes de PL/SQL</h2>
+<h3 id="bloques-plsql">Bloques PL/SQL:</h3>
+<p>Un programa PL/SQL está compuesto por bloques, que pueden ser anidados. Cada bloque tiene tres secciones:</p>
+<p>Declarativa: Para definir variables y tipos de datos.</p>
+<p>Ejecutiva: Donde se ejecutan las sentencias SQL y la lógica del programa.</p>
+<p>Excepcional: Para manejar errores que puedan surgir durante la ejecución.</p>
+<pre><code>DECLARE
+    v_salario NUMBER;
+BEGIN
+    SELECT salario INTO v_salario FROM empleados WHERE id = 1;
+    DBMS_OUTPUT.PUT_LINE('Salario: ' || v_salario);
+EXCEPTION
+    WHEN NO_DATA_FOUND THEN
+        DBMS_OUTPUT.PUT_LINE('Empleado no encontrado.');
+END;
+</code></pre>
+<h3 id="procedimientos-y-funciones">Procedimientos y Funciones</h3>
+<p>Procedimientos: Bloques de código que realizan una tarea específica y no devuelven un valor.
+Funciones: Similar a los procedimientos, pero devuelven un valor.</p>
+<h3 id="paquetes">Paquetes</h3>
+<p>Agrupan procedimientos y funciones relacionados, junto con variables y tipos de datos, facilitando la organización y el manejo de código.</p>
+<h2 id="ventajas-de-plsql">Ventajas de PL/SQL</h2>
+<ul>
+<li>Eficiencia: Al ejecutarse en el servidor, reduce el tráfico de red y mejora el rendimiento.</li>
+<li>Seguridad: Permite controlar el acceso a los datos mediante la implementación de lógica de negocio en el servidor.</li>
+<li>Mantenimiento: Facilita el mantenimiento y la reutilización del código a través de la modularidad y la organización en paquetes.</li>
+</ul>
+<h2 id="casos-de-uso">Casos de Uso</h2>
+<ul>
+<li>Automatización de Tareas: PL/SQL se utiliza para crear scripts que automatizan procesos de gestión de datos.</li>
+<li>Validación de Datos: Implementación de lógica de negocio para garantizar la integridad de los datos.</li>
+<li>Desarrollo de Aplicaciones: Usado en el desarrollo de aplicaciones que requieren acceso a la base de datos, como aplicaciones empresariales.</li>
+</ul>
+<h2 id="conclusion">Conclusión</h2>
+<p>PL/SQL es una herramienta poderosa y versátil para los desarrolladores que trabajan con bases de datos Oracle. Su capacidad para combinar SQL con la programación procedural facilita la creación de aplicaciones complejas y eficientes, optimizando la gestión de datos y mejorando el rendimiento general de las operaciones en la base de datos.</p>
+
+  <br>
+    
+
+    
+    
+      
+    
+
+  <div class="row wm-article-nav-buttons" role="navigation" aria-label="navigation">
+    
+    <div class="wm-article-nav pull-right">
+      <a href="../consultas/" class="btn btn-xs btn-default pull-right">
+        Next
+        <i class="fa fa-chevron-right" aria-hidden="true"></i>
+      </a>
+      <a href="../consultas/" class="btn btn-xs btn-link">
+        Consultas
+      </a>
+    </div>
+    
+    <div class="wm-article-nav">
+      <a href="../../../bbdd/" class="btn btn-xs btn-default pull-left">
+        <i class="fa fa-chevron-left" aria-hidden="true"></i>
+        Previous</a><a href="../../../bbdd/" class="btn btn-xs btn-link">
+        Introducción
+      </a>
+    </div>
+    
+  </div>
+
+    <br>
+</div>
+
+<footer class="container-fluid wm-page-content">
+  <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a> using <a href="https://github.com/gristlabs/mkdocs-windmill">Windmill</a> theme by Grist Labs.</p>
+</footer>
+
+</body>
+</html>
